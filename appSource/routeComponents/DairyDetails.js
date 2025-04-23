@@ -1,4 +1,5 @@
-import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet, Dimensions } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet, Dimensions, Modal } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 
@@ -6,6 +7,7 @@ const { height } = Dimensions.get('window');
 
 const DairyDetails = ({ item }) => {
     const navigation = useNavigation();
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
     const deleteDream = async () => {
         try {
@@ -32,7 +34,7 @@ const DairyDetails = ({ item }) => {
                     <TouchableOpacity onPress={() => navigation.navigate('AddDairyRoute', {item})}>
                         <Image source={require('../appAssets/icons/edit.png')} style={{width: 42, height: 42, marginRight: 10}} />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={deleteDream}>
+                    <TouchableOpacity onPress={() => setDeleteModalOpen(true)}>
                         <Image source={require('../appAssets/icons/delete.png')} style={{width: 42, height: 42}} />
                     </TouchableOpacity>
                 </View>
@@ -77,6 +79,28 @@ const DairyDetails = ({ item }) => {
 
             </ScrollView>
 
+            <Modal
+                animationType="fade"
+                transparent
+                visible={deleteModalOpen}
+                onRequestClose={() => setDeleteModalOpen(false)}
+            >
+                <View style={styles.modalLayout}>
+                    <View style={styles.modalContainer}>
+                        <Text style={styles.modalTitle}>Are you sure?</Text>
+                        <Text style={styles.modalText}>Are you sure you want to go out and delete it?</Text>
+                        <View style={[styles.row, {marginBottom: 0}]}>
+                            <TouchableOpacity style={[styles.modalBtn, {backgroundColor: '#fff'}]} onPress={() => setDeleteModalOpen(false)}>
+                                <Text style={[styles.modalBtnText, {color: '#000'}]}>Cancel</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={[styles.modalBtn, {backgroundColor: '#ff0000'}]} onPress={deleteDream}>
+                                <Text style={[styles.modalBtnText, {color: '#fff'}]}>Delete</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
+
         </View>
     )
 };
@@ -84,10 +108,10 @@ const DairyDetails = ({ item }) => {
 const styles = StyleSheet.create({
 
     row: {
+        width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        width: '100%',
         marginBottom: 21,
         flexWrap: 'wrap'
     },
@@ -130,6 +154,48 @@ const styles = StyleSheet.create({
         lineHeight: 20,
         fontWeight: '400',
         color: '#fff',
+    },
+
+    modalLayout: {
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    modalContainer: {
+        width: '85%',
+        borderRadius: 12,
+        backgroundColor: '#4f2bb0',
+        padding: 20
+    },
+
+    modalTitle: {
+        fontSize: 24,
+        fontWeight: '700',
+        color: '#fff',
+        marginBottom: 12
+    },
+
+    modalText: {
+        fontSize: 13,
+        lineHeight: 20,
+        fontWeight: '300',
+        color: '#fff',
+        marginBottom: 20
+    },
+
+    modalBtn: {
+        width: '47%',
+        borderRadius: 7,
+        padding: 9,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    modalBtnText: {
+        fontSize: 15,
+        fontWeight: '700',
     }
 
 });

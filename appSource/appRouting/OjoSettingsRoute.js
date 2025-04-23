@@ -3,7 +3,7 @@ import OjoSettings from "../routeComponents/OjoSettings"
 
 const OjoSettingsRoute = () => {
     return (
-        <RouteWrapper child={<OjoSettings />} main={true} />
+        <RouteWrapper child={<OjoSettings />} main={true} back={'main'} />
     )
 };
 

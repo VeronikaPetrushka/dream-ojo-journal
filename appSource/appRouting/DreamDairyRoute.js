@@ -3,7 +3,7 @@ import DreamDairy from "../routeComponents/DreamDairy"
 
 const DreamDairyRoute = () => {
     return (
-        <RouteWrapper child={<DreamDairy />} main={true} />
+        <RouteWrapper child={<DreamDairy />} main={true} back={'main'} />
     )
 };
 

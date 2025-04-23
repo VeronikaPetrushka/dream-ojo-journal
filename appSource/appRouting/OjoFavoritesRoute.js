@@ -3,7 +3,7 @@ import OjoFavorites from "../routeComponents/OjoFavorites"
 
 const OjoFavoritesRoute = () => {
     return (
-        <RouteWrapper child={<OjoFavorites />} />
+        <RouteWrapper child={<OjoFavorites />} back={'main'} />
     )
 };
 

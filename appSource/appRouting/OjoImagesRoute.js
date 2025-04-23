@@ -3,7 +3,7 @@ import OjoImages from "../routeComponents/OjoImages"
 
 const OjoImagesRoute = () => {
     return (
-        <RouteWrapper child={<OjoImages />} main={true} />
+        <RouteWrapper child={<OjoImages />} main={true} back={'main'} />
     )
 };
 

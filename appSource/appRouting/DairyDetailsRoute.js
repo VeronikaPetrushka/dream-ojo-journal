@@ -5,7 +5,7 @@ const DairyDetailsRoute = ({ route }) => {
     const { item } = route.params || {};
 
     return (
-        <RouteWrapper child={<DairyDetails item={item} />} />
+        <RouteWrapper child={<DairyDetails item={item} />} back={'main'} />
     )
 };
 

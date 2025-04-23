@@ -3,7 +3,7 @@ import Decipher from "../routeComponents/Decipher"
 
 const DecipherRoute = () => {
     return (
-        <RouteWrapper child={<Decipher />} main={true} />
+        <RouteWrapper child={<Decipher />} main={true} back={'decipher'} />
     )
 };
 
