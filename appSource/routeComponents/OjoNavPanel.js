@@ -23,7 +23,7 @@ const panel = [
 
 const OjoNavPanel = () => {
     const navigation = useNavigation();
-    const [focused, setFocused] = useState('MiniGameScreen');
+    const [focused, setFocused] = useState('DreamDairyRoute');
 
     const handleNavigate = (screen) => {
         setFocused(screen);
