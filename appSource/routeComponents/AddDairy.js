@@ -109,91 +109,93 @@ const AddDiary = ({ item }) => {
                 style={{alignSelf: 'center'}}
             />
 
-            {
-                name && <Text style={styles.label}>Name</Text>
-            }
-            <View style={{width: '100%', flexDirection: 'row'}}>
-                <TextInput
-                    style={styles.input}
-                    value={name}
-                    onChangeText={setName}
-                    placeholder='Name'
-                    placeholderTextColor={'#6c41df'}
-                />
+            <ScrollView style={{ width: '100%' }}>
                 {
-                    name && (
-                        <TouchableOpacity style={{position: 'absolute', top: 13, right: 13, zIndex: 10}} onPress={() => setName(null)}>
-                            <Image source={require('../appAssets/icons/resetInput.png')} style={{width: 24, height: 24, resizeMode: 'contain'}} />
-                        </TouchableOpacity>
-                    )
+                    name && <Text style={styles.label}>Name</Text>
                 }
-            </View>
-
-            {
-                description && <Text style={styles.label}>Description</Text>
-            }
-            <View style={{width: '100%', flexDirection: 'row'}}>
-                <TextInput
-                    style={styles.input}
-                    value={description}
-                    onChangeText={setDescription}
-                    placeholder='Description'
-                    placeholderTextColor={'#6c41df'}
-                    multiline
-                />
-                {
-                    description && (
-                        <TouchableOpacity style={{position: 'absolute', top: 13, right: 13, zIndex: 10}} onPress={() => setDescription(null)}>
-                            <Image source={require('../appAssets/icons/resetInput.png')} style={{width: 24, height: 24, resizeMode: 'contain'}} />
-                        </TouchableOpacity>
-                    )
-                }
-            </View>
-
-            <Text style={styles.label}>Sleep mood</Text>
-            <View style={[styles.row, {marginBottom: 5, justifyContent: 'flex-start'}]}>
-                {
-                    sleepMoods.map((m, idx) => (
-                        <TouchableOpacity
-                            key={idx}
-                            style={[styles.moodBtn, mood === m && { backgroundColor: '#e349ff' }]}
-                            onPress={() => mood===m ? setMood(null) : setMood(m)}
-                        >
-                            <Text style={[styles.moodBtnText, mood===m && {fontWeight: '700'}]}>{m}</Text>
-                        </TouchableOpacity>
-                    ))
-                }
-            </View>
-
-            <Text style={styles.label}>Tags</Text>
-            <View style={[styles.row, {marginBottom: 0, justifyContent: 'flex-start', flexWrap: 'wrap'}]}>
-                {tags.map((tag, index) => (
-                    <View key={index} style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 5, marginRight: 5 }}>
-                        <TextInput
-                            style={[styles.input, {width: 140}]}
-                            value={tag}
-                            onChangeText={(text) => handleTagChange(text, index)}
-                            placeholder="Tag"
-                            placeholderTextColor="#6c41df"
-                        />
-
-                        {tag.length > 0 && (
-                            <TouchableOpacity
-                                onPress={() => handleRemoveTag(index)}
-                                style={{ position: 'absolute', top: 13, right: 13 }}
-                            >
-                                <Image
-                                    source={require('../appAssets/icons/resetInput.png')}
-                                    style={{ width: 24, height: 24, resizeMode: 'contain' }}
-                                />
+                <View style={{width: '100%', flexDirection: 'row'}}>
+                    <TextInput
+                        style={styles.input}
+                        value={name}
+                        onChangeText={setName}
+                        placeholder='Name'
+                        placeholderTextColor={'#6c41df'}
+                    />
+                    {
+                        name && (
+                            <TouchableOpacity style={{position: 'absolute', top: 13, right: 13, zIndex: 10}} onPress={() => setName(null)}>
+                                <Image source={require('../appAssets/icons/resetInput.png')} style={{width: 24, height: 24, resizeMode: 'contain'}} />
                             </TouchableOpacity>
-                        )}
-                    </View>
-                ))}
-                <TouchableOpacity onPress={handleAddTag}>
-                    <Image source={require('../appAssets/icons/addTag.png')} style={{width: 24, height: 24, marginBottom: 5}} />
-                </TouchableOpacity>
-            </View>
+                        )
+                    }
+                </View>
+
+                {
+                    description && <Text style={styles.label}>Description</Text>
+                }
+                <View style={{width: '100%', flexDirection: 'row'}}>
+                    <TextInput
+                        style={styles.input}
+                        value={description}
+                        onChangeText={setDescription}
+                        placeholder='Description'
+                        placeholderTextColor={'#6c41df'}
+                        multiline
+                    />
+                    {
+                        description && (
+                            <TouchableOpacity style={{position: 'absolute', top: 13, right: 13, zIndex: 10}} onPress={() => setDescription(null)}>
+                                <Image source={require('../appAssets/icons/resetInput.png')} style={{width: 24, height: 24, resizeMode: 'contain'}} />
+                            </TouchableOpacity>
+                        )
+                    }
+                </View>
+
+                <Text style={styles.label}>Sleep mood</Text>
+                <View style={[styles.row, {marginBottom: 5, justifyContent: 'flex-start'}]}>
+                    {
+                        sleepMoods.map((m, idx) => (
+                            <TouchableOpacity
+                                key={idx}
+                                style={[styles.moodBtn, mood === m && { backgroundColor: '#e349ff' }]}
+                                onPress={() => mood===m ? setMood(null) : setMood(m)}
+                            >
+                                <Text style={[styles.moodBtnText, mood===m && {fontWeight: '700'}]}>{m}</Text>
+                            </TouchableOpacity>
+                        ))
+                    }
+                </View>
+
+                <Text style={styles.label}>Tags</Text>
+                <View style={[styles.row, {marginBottom: 0, justifyContent: 'flex-start', flexWrap: 'wrap'}]}>
+                    {tags.map((tag, index) => (
+                        <View key={index} style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 5, marginRight: 5 }}>
+                            <TextInput
+                                style={[styles.input, {width: 140}]}
+                                value={tag}
+                                onChangeText={(text) => handleTagChange(text, index)}
+                                placeholder="Tag"
+                                placeholderTextColor="#6c41df"
+                            />
+
+                            {tag.length > 0 && (
+                                <TouchableOpacity
+                                    onPress={() => handleRemoveTag(index)}
+                                    style={{ position: 'absolute', top: 13, right: 13 }}
+                                >
+                                    <Image
+                                        source={require('../appAssets/icons/resetInput.png')}
+                                        style={{ width: 24, height: 24, resizeMode: 'contain' }}
+                                    />
+                                </TouchableOpacity>
+                            )}
+                        </View>
+                    ))}
+                    <TouchableOpacity onPress={handleAddTag}>
+                        <Image source={require('../appAssets/icons/addTag.png')} style={{width: 24, height: 24, marginBottom: 5}} />
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
 
         </View>
     )

@@ -97,7 +97,7 @@ const Decipher = () => {
                         {
                             check ? (
                                 <View style={{ width: '100%', flexGrow: 1 }}>
-                                    <View style={{width: '100%', height: 226, marginTop: height * 0.1, marginBottom: height * 0.1}}>
+                                    <View style={{width: '100%', height: 226, marginTop: height * 0.1, marginBottom: height * 0.05}}>
                                         <Text style={styles.resultText}>{resultText}</Text>
                                         <Image source={require('../appAssets/decor/dreamResult.png')} style={{width: '100%', height: '100%', resizeMode: 'contain'}} />
                                     </View>
@@ -109,14 +109,14 @@ const Decipher = () => {
                                             onPress={resetDreams}>
                                             <Image
                                                 source={require('../appAssets/decor/resetDreams.png')}
-                                                style={{ width: 90, height: 90, resizeMode: 'contain', marginRight: 10 }}
+                                                style={{ width: height * 0.1, height: height * 0.1, resizeMode: 'contain', marginRight: 10 }}
                                             />
                                         </TouchableOpacity>
                                         <TouchableOpacity
                                             onPress={resetDecipher}>
                                             <Image
                                                 source={require('../appAssets/decor/resetDecipher.png')}
-                                                style={{ width: 90, height: 90, resizeMode: 'contain' }}
+                                                style={{ width: height * 0.1, height: height * 0.1, resizeMode: 'contain' }}
                                             />
                                         </TouchableOpacity>
                                     </View>
@@ -128,7 +128,7 @@ const Decipher = () => {
                                         onPress={resetDecipher}>
                                         <Image
                                             source={require('../appAssets/decor/resetDecipher.png')}
-                                            style={{ width: 60, height: 60, resizeMode: 'contain', marginBottom: height * 0.03 }}
+                                            style={{ width: height * 0.07, height: height * 0.07, resizeMode: 'contain', marginBottom: height * 0.03 }}
                                         />
                                     </TouchableOpacity>
 
